@@ -1,0 +1,67 @@
+/*
+Palindromic String
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+You are given a string S consisting of lowercase English letters. Determine whether adding some number of a's (possibly zero) at the beginning of S can make it a palindrome.
+Input
+The input consists of a single string S.
+
+Constraints
+1 ≤ ∣S∣ ≤ 10^6
+S consists of lowercase English letters.
+Output
+If adding some number of a's (possibly zero) at the beginning of S can make it a palindrome, print Yes; otherwise, print No.
+Example
+Sample Input 1
+kasaka
+Sample Output 1
+Yes
+
+Sample Input 2
+reveh
+Sample Output 2
+No
+*/
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine().trim();
+        int n = s.length();
+        int i = 0;
+        int j = n - 1;
+        
+        while (i < j) {
+            if (s.charAt(i) != s.charAt(j)) {
+                break;
+            }
+            i++;
+            j--;
+        }
+        
+        if (i >= j) {
+            System.out.println("Yes");
+        } else {
+            int k = 0;
+            for (int l = n - 1; l >= i; l--) {
+                if (s.charAt(l) == 'a') {
+                    k++;
+                } else {
+                    break;
+                }
+            }
+            if (k >= j - i + 1) {
+                System.out.println("Yes");
+            } else {
+                System.out.println("No");
+            }
+        }
+    }
+}
