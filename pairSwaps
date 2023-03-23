@@ -1,0 +1,64 @@
+/*
+Pair Swaps
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+Given an array of N integers. Find the number of pairs (i, j) of integers satisfying all of the following conditions:
+1 ≤ i < j ≤ N
+Ai ≠ Aj
+​
+Input
+The first line of the input consists of an integer N. The second line consists of N space separated integers.
+
+Constraints
+All values in input are integers.
+2 ≤ N ≤ 3×10^5
+1 ≤ Ai ≤ 10^9
+Output
+Print the answer as an integer.
+Example
+Sample Input 1
+3
+1 7 1
+Sample Output 1
+2
+
+Sample Input 2
+10
+1 10 100 1000 10000 100000 1000000 10000000 100000000 1000000000
+Sample Output 2
+45
+*/
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scan = new Scanner(System.in);
+        long n = scan.nextLong();
+        List<Long> a = new ArrayList<Long>();
+        HashMap<Long, Long> map = new HashMap<Long, Long>();
+        for(long i = 0; i < n; i++){
+        a.add(scan.nextLong());
+        }
+        for(int i = 0; i < n; i++){
+        if(map.containsKey(a.get((int)i))){
+            map.put(a.get(i), map.get(a.get(i))+1);
+        }else{
+            map.put(a.get((int)i), 1L);
+        }
+        }
+        long ans = (n*(n-1))/2;
+        for(long i : map.values()){
+        if(i != 1){
+            ans -= (i*(i-1))/2;
+        }
+        }
+        System.out.println(ans);
+        
+    }
+}
