@@ -1,0 +1,55 @@
+/*
+Consonants and Vowels
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+Alexa loves to play with strings. She wants to know if her string consists of an equal number of consonants and vowels or not. Print Yes if the number of consonants is equal to the number of vowels.
+Input
+The input consists of a string S.
+
+Constraints
+S consists of lower case English alphabets.
+Output
+Print Yes if the number of vowels and consonants are equal else print No.
+starsASK AI
+BETA
+Simpler Explanation
+Concepts Used
+Example
+Sample Input 1
+aebecd
+Sample Output 1
+Yes
+
+Sample Input 2
+newton
+Sample Output 2
+No
+
+*/
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+
+        int count = 0;
+
+        for(int i = 0; i< str.length(); i++){
+            if(str.charAt(i)=='a' || str.charAt(i)=='e' ||str.charAt(i)=='i' ||str.charAt(i)=='o' ||str.charAt(i)=='u'){
+                count++;
+            }
+        }
+        if(count == (Math.abs(str.length()-count))){
+            System.out.println("Yes");
+        }else{
+            System.out.println("No");
+        }
+    }
+}
