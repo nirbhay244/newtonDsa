@@ -1,0 +1,63 @@
+/*
+Construct Strings
+Time Limit: 2 sec
+Memory Limit: 128000 kB
+Problem Statement
+You are given two strings A and B. You need to check if string A can be constructed from string B. Print Yes if it can be constructed else print No.
+Input
+The input consists of two space- separated integers A and B.
+
+Constraints
+The length of A is lesser than or equal to the length of B.
+The strings consist of lower case English alphabets.
+Output
+Print Yes if A can be constructed from B else print No.
+ai_logoASK NEWTON AI
+BETA
+Simpler Explanation
+Concepts Used
+Example
+Sample Input 1
+a b
+Sample Output 1
+No
+
+Sample Input 2
+aa aab
+Sample Output 2
+Yes
+*/
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        String b = sc.next();
+
+        int[] freq = new int[26];
+        for (int i = 0; i < b.length(); i++) {
+            freq[b.charAt(i) - 'a']++;
+        }
+        boolean possible = true;
+        for (int i = 0; i < a.length(); i++) {
+            if (freq[a.charAt(i) - 'a'] <= 0) {
+                possible = false;
+                break;
+            } 
+            else {
+                freq[a.charAt(i) - 'a']--;
+            }
+        }
+        if (possible) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
